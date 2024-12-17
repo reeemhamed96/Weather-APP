@@ -4,21 +4,21 @@ const searchInput = document.getElementById("searchInput")
 async function getData(city) {
     let req = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=7c177f82de784dda854221118241512&q=${city}&days=3&aqi=no&alerts=no`)
     let data = await req.json()
-    console.log(data);
     if (!data.error) {
         showData(data)
     }
 }
 //get current location
-getData("cairo")
 
+getData("Giza")
 function success(position) {
     getData(`${position.coords.latitude},${position.coords.longitude}`)
 }
 function fail() {
     getData("cairo")
 }
-navigator.geolocation.getCurrentPosition(success, fail);
+navigator.geolocation.getCurrentPosition(success, fail)
+
 // get weekday
 function getDay(date) {
     const day = new Date(date)
