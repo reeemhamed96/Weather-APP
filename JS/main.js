@@ -10,6 +10,8 @@ async function getData(city) {
     }
 }
 //get current location
+getData("cairo")
+
 function success(position) {
     getData(`${position.coords.latitude},${position.coords.longitude}`)
 }
