@@ -2,7 +2,7 @@
 const searchInput = document.getElementById("searchInput")
 // get forecast data
 async function getData(city) {
-    let req = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=7c177f82de784dda854221118241512&q=${city}&days=3&aqi=no&alerts=no`)
+    let req = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=7c177f82de784dda854221118241512&q=${city}&days=3&aqi=no&alerts=no`)
     let data = await req.json()
     console.log(data);
     if (!data.error) {
@@ -66,7 +66,7 @@ function showData(data) {
 }
 // Search 
 searchInput.addEventListener("keyup", async (ele) => {
-    let searchReq = await fetch(`http://api.weatherapi.com/v1/search.json?key=7c177f82de784dda854221118241512&q=${ele.target.value.trim() ? ele.target.value.trim() : navigator.geolocation.getCurrentPosition(success, fail)}`)
+    let searchReq = await fetch(`https://api.weatherapi.com/v1/search.json?key=7c177f82de784dda854221118241512&q=${ele.target.value.trim() ? ele.target.value.trim() : navigator.geolocation.getCurrentPosition(success, fail)}`)
     let searchData = await searchReq.json()
     if (searchData.length) {
         getData(searchData[0].name)
